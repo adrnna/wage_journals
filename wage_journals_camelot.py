@@ -10,6 +10,7 @@ from tqdm import tqdm
 import re
 import camelot
 import numpy as np
+import json
 
 
 pdf_folder_path = input("Enter the path of the folder with the pdf files: ")
@@ -322,6 +323,11 @@ for filepath, pdf_name in tqdm(zip(filepath_list, filter_pdfs), total=len(filepa
     except Exception as e:
         print(f"3Document {pdf_name} failed. {e}")
 
-# create xlsx file
+# export journal to xlsx file
 concat_df = pd.concat(dfs_journals.values(), axis=0, ignore_index=True)        
 concat_df.to_excel('wage_journals.xlsx', index=False)
+
+# export checked_list to a txt file
+with open('wage_data_check.txt', 'w') as f:
+    for key, value in checked_list.items():
+         f.write(key + ': ' + str(value) + '\n')
