@@ -10,8 +10,6 @@ from tqdm import tqdm
 import re
 import camelot
 import numpy as np
-import json
-
 
 pdf_folder_path = input("Enter the path of the folder with the pdf files: ")
 #pdf_folder_path = 'path//to//folder'
